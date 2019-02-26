@@ -49,7 +49,7 @@ public interface UserMapper{//可以继承或者不继承BaseMapper
      * @param state 状态
      * @return 分页对象
      */
-    IPage<User> selectPageVo(Page page, @Param("state") Integer state);
+    IPage<UserVo> selectPageVo(Page page, @Param("state") Integer state);
 }
 ```
 
@@ -64,7 +64,7 @@ public interface UserMapper{//可以继承或者不继承BaseMapper
 - UserServiceImpl.java 调用分页方法
 
 ``` java
-public IPage<User> selectUserPage(Page<User> page, Integer state) {
+public IPage<UserVo> selectUserPage(Page<UserVo> page, Integer state) {
     // 不进行 count sql 优化，解决 MP 无法自动优化 SQL 问题，这时候你需要自己查询 count 部分
     // page.setOptimizeCountSql(false);
     // 当 total 为非 0 时(默认为 0),分页插件不会进行 count 查询
